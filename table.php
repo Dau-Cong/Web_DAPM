@@ -20,7 +20,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Inventory Management System</title>
+    <title>DAPM</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="assets/images/icon/favicon.ico">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -67,13 +67,33 @@
                                 <a href="index.php" aria-expanded="true"><i class="ti-dashboard"></i><span>dashboard</span></a>
                                 
                             </li>
-                            
+                             <li class="active">
+                                <a href="users.php" aria-expanded="true"><i class="ti-user"></i>
+                                <span>Manage Users</span></a>
+                            </li>
                            
                             
                             <li class="active">
                                 <a href="table.php" aria-expanded="true"><i class="fa fa-table"></i>
                                     <span>Item Records</span></a>
                                
+                            </li>
+                            <li >
+                                <a href="#" aria-expanded="true"><i class="fa fa-rss"></i>
+                                    <span>Blog</span>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="blogs_view.php" aria-expanded="true">
+                                            <span>Add Blog</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#" aria-expanded="true">
+                                            <span>List Blog</span>
+                                        </a>
+                                    </li>
+                                </ul>
                             </li>
                             
                            
@@ -98,12 +118,12 @@
                             <span></span>
                             <span></span>
                         </div>
-                        <div class="search-box pull-left">
+<!--                         <div class="search-box pull-left">
                             <form action="#">
                                 <input type="text" name="search" placeholder="Search..." required>
                                 <i class="ti-search"></i>
                             </form>
-                        </div>
+                        </div> -->
                     </div>
                     
                     <!-- profile info & task notification-->

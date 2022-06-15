@@ -15,7 +15,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Home</title>
+	<title>DAPM</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<link rel="stylesheet" href="Inventmng/srtdash/assets/bootstrap.min.css">
 </head>
@@ -50,7 +50,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>srtdash - ICO Dashboard</title>
+    <title>DAPM</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="assets/images/icon/favicon.ico">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -94,18 +94,31 @@
                         <ul class="metismenu" id="menu">
                             <li class="active">
                                 <a href="index.php" aria-expanded="true"><i class="ti-dashboard"></i><span>dashboard</span></a>
-                                
+                            </li>
+                            <li>
+                                <a href="users.php" aria-expanded="true"><i class="ti-user"></i>
+                                <span>Manage Users</span></a>
                             </li>
                             <li>
                                 <a href="table.php" aria-expanded="true"><i class="fa fa-table"></i>
-                                    <span>Item Records</span></a>
-                               <!-- <ul class="collapse">
-                                    <li><a href="table-basic.html">basic table</a></li>
-                                    <li><a href="table-layout.html">table layout</a></li>
-                                    <li><a href="datatable.html">datatable</a></li>
+                                <span>Item Records</span></a>
+                            </li>
+                            <li >
+                                <a href="#" aria-expanded="true"><i class="fa fa-rss"></i>
+                                    <span>Blog</span>
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="blogs_view.php" aria-expanded="true">
+                                            <span>Add Blog</span>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#" aria-expanded="true">
+                                            <span>List Blog</span>
+                                        </a>
+                                    </li>
                                 </ul>
-								!-->
-								
                             </li>
                            
                             
@@ -130,12 +143,12 @@
                             <span></span>
                             <span></span>
                         </div>
-                        <div class="search-box pull-left">
+<!--                         <div class="search-box pull-left">
                             <form action="#">
                                 <input type="text" name="search" placeholder="Search..." required>
                                 <i class="ti-search"></i>
                             </form>
-                        </div>
+                        </div> -->
                     </div>
                     <!-- profile info & task notification -->
                     <div class="col-md-6 col-sm-4 clearfix">
@@ -164,8 +177,7 @@
                         <div class="user-profile pull-right">
                             <img class="avatar user-thumb" src="assets/images/author/avatar.png" alt="avatar">
                             <h4 class="user-name dropdown-toggle" data-toggle="dropdown"><?php echo $_SESSION['username']?> <i class="fa fa-angle-down"></i></h4>
-                            <div class="dropdown-menu">
-                                 
+                            <div class="dropdown-menu">  
 							<a class="dropdown-item" href="index.php?logout='1'">Log Out</a>
                             </div>
                         </div>
