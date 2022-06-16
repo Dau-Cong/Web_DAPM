@@ -49,6 +49,7 @@
     <link rel="stylesheet" href="assets/css/responsive.css">
     <!-- modernizr css -->
     <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
+
 </head>
 
 <body>
@@ -67,7 +68,7 @@
         <div class="sidebar-menu">
             <div class="sidebar-header">
                 <div class="logo">
-                    <a href="index.php"><img src="assets/images/icon/logo.png" alt="logo"></a>
+                    <a href="index.php"><img src="assets/images/icon/SanJ.png" alt="logo"></a>
                 </div>
             </div>
             <div class="main-menu">
@@ -188,7 +189,9 @@
         </div>
     </section>
     <section>
+
         <div class="col-12">
+
             <div class="card">
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -197,8 +200,11 @@
                             <div class="col-sm-12 col-md-6"></div>
                             <div class="col-sm-12 col-md-6"></div>
                         </div>
+                        <input type="search" class="form-control" id="search" placeholder="Search" name="seach">
+                        <div id="searchresult"></div>
                         <div class="row">
                             <div class="col-sm-12">
+                                </br>
                                 <table  id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
                                     <thead>
                                         <tr role="row">
@@ -310,9 +316,27 @@
     <!-- others plugins -->
     <script src="assets/js/plugins.js"></script>
     <script src="assets/js/scripts.js"></script>
-    <script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="text/javascript">
         $(document).ready( function () {
-        $('#exemple2').DataTable();
+        $('#search').keyup(function(){
+            var input = $(this).val();
+            // alert(input);
+            if(input != ""){
+                $.ajax({
+                    url:"search.php",
+                    method:"POST",
+                    data:{input:input},
+                    success:function(data){
+                        $("#searchresult").html(data);
+                        $("#searchresult").css("display","block");
+                    }
+                });
+            }else{
+                $("#searchresult").css("display","none");
+            }
+        });
     } );
         </script>
 </form>
