@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th5 31, 2022 lúc 11:03 AM
+-- Thời gian đã tạo: Th6 16, 2022 lúc 04:53 PM
 -- Phiên bản máy phục vụ: 10.4.24-MariaDB
 -- Phiên bản PHP: 7.4.29
 
@@ -32,19 +32,26 @@ CREATE TABLE `baiviet` (
   `idDotCuuTro` int(11) NOT NULL,
   `tieuDe` varchar(255) NOT NULL,
   `noiDung` varchar(255) NOT NULL,
-  `thoiGian` date DEFAULT NULL,
-  `idNhanVien` int(11) NOT NULL
+  `thoiGian` date DEFAULT current_timestamp(),
+  `idNhanVien` int(11) DEFAULT NULL,
+  `image` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Đang đổ dữ liệu cho bảng `baiviet`
 --
 
-INSERT INTO `baiviet` (`idBaiViet`, `idDotCuuTro`, `tieuDe`, `noiDung`, `thoiGian`, `idNhanVien`) VALUES
-(1, 1, 'Ủng hộ người nghèo', 'Ủng hộ người nghèo', '2020-07-20', 1),
-(2, 1, 'Ủng hộ lũ lụt', 'Ủng hộ người nghèo', '2020-07-20', 1),
-(3, 2, 'Ủng hộ người nghèo', 'Ủng hộ người nghèo', '2020-07-20', 1),
-(4, 3, 'Ủng hộ người nghèo', 'Ủng hộ người nghèo', '2020-07-20', 1);
+INSERT INTO `baiviet` (`idBaiViet`, `idDotCuuTro`, `tieuDe`, `noiDung`, `thoiGian`, `idNhanVien`, `image`) VALUES
+(1, 1, 'Ủng hộ người nghèo', 'Ủng hộ người nghèo', '2020-07-20', 1, 'sample-img-2.png'),
+(2, 1, 'Ủng hộ lũ lụt', 'Ủng hộ người nghèo', '2020-07-20', 1, 'sample-img-1.jpg'),
+(3, 2, 'Ủng hộ người nghèo', 'Ủng hộ người nghèo', '2020-07-20', 1, 'Germany.png'),
+(4, 3, 'Ủng hộ người nghèo', 'Ủng hộ người nghèo', '2020-07-20', 1, NULL),
+(8, 3, 'aa', 'noiDung', '2022-05-11', NULL, 'sample-img-3.png'),
+(10, 3, 'noi dung 2', 'hah', '2022-05-11', NULL, NULL),
+(11, 3, 'noi dung 3', 'hihi', '2022-06-16', NULL, NULL),
+(12, 3, 'noi dung 4', 'hihi', '2022-06-16', NULL, 'avatar1.jpg'),
+(13, 2, 'hhaa', 'wwwww', '2022-06-15', NULL, NULL),
+(14, 2, 'lũ 2021', 'h', '2022-06-15', NULL, 'bg-1.jpg');
 
 -- --------------------------------------------------------
 
@@ -185,7 +192,7 @@ CREATE TABLE `dangkyungho` (
   `trangThai` varchar(255) DEFAULT NULL,
   `ghiChu` varchar(255) DEFAULT NULL,
   `idNguoiUngHo` int(11) NOT NULL,
-  `idDotCuuTro` int(11) NOT NULL
+  `idDotCuuTro` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -218,7 +225,8 @@ INSERT INTO `danhmuc` (`idDanhMuc`, `tenDanhMuc`) VALUES
 (2, 'Tiền'),
 (3, 'Quần áo'),
 (4, 'Gạo'),
-(5, 'Mì tôm');
+(10, ''),
+(11, '');
 
 -- --------------------------------------------------------
 
@@ -242,7 +250,8 @@ CREATE TABLE `dotcuutro` (
 INSERT INTO `dotcuutro` (`idDotCuuTro`, `tenDotCuuTro`, `ngayTao`, `ngayBatDau`, `ngayKetThuc`, `idNhanVien`) VALUES
 (1, 'Đợt cứu trợ lũ lụt số 1', '2021-07-19 17:00:00', '2021-07-25 00:00:00.000000', '2021-08-04 00:00:00.000000', 1),
 (2, 'Đợt cứu trợ lũ lụt số 2', '2021-07-19 17:00:00', '2021-07-26 00:00:00.000000', '2021-08-04 00:00:00.000000', 2),
-(3, 'Đợt cứu trợ lũ lụt số 3', '2021-07-19 17:00:00', '2021-07-26 00:00:00.000000', '2021-08-04 00:00:00.000000', 3);
+(3, 'Đợt cứu trợ lũ lụt số 3', '2021-07-19 17:00:00', '2021-07-26 00:00:00.000000', '2021-08-04 00:00:00.000000', 3),
+(5, 'Đợt cứu trợ lũ lụt số 4', '2022-06-16 14:28:47', '0000-00-00 00:00:00.000000', '0000-00-00 00:00:00.000000', NULL);
 
 -- --------------------------------------------------------
 
@@ -369,7 +378,7 @@ CREATE TABLE `nhanvien` (
 --
 
 INSERT INTO `nhanvien` (`idNhanVien`, `tenNhanVien`, `email`, `soDT`, `diaChi`, `gioiTinh`, `ngaySinh`, `tenTaiKhoan`, `matKhau`, `trangThai`) VALUES
-(1, 'Đậu Thái Công', 'daucong@gmail.com', '0795599636', 'Đà Nẵng', 1, '2001-09-11', 'daucong', '012345', NULL),
+(1, 'Đậu Thái Công', 'daucong@gmail.com', '0795599636', 'Gia Lai', 1, '2001-09-11', 'daucong', '012345', NULL),
 (2, 'Công Thành', 'Thanh@gmail.com', '0745678911', 'Đà Nẵng', 0, '2001-11-06', 'congthanh', '012345', NULL),
 (3, 'Ngọc Hiếu', 'ngHieu@gmail.com', '0328495068', 'Đà Nẵng', 0, '2001-10-01', 'ngochieu', '012345', NULL),
 (4, 'Tấn Minh', 'minh@gmail.com', '0889189911', 'Đà Nẵng', 0, '2001-09-22', 'tanminh', '012345', NULL);
@@ -422,6 +431,23 @@ INSERT INTO `phieuxuat` (`idPhieuXuat`, `idDotCuuTro`, `idDotPhanBo`, `idNhanVie
 (1, 1, 1, 2, 1, '2020-06-30', 'Đã xuất'),
 (2, 1, 1, 3, 2, '2021-07-10', 'Đã xuất'),
 (3, 2, 3, 2, 1, '2022-05-20', 'Đã xác nhận');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `users`
+--
+
+CREATE TABLE `users` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email_verified_at` timestamp NULL DEFAULT NULL,
+  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -573,6 +599,13 @@ ALTER TABLE `phieuxuat`
   ADD KEY `FK__PhieuXuat__idDot__7E37BEF6` (`idDotPhanBo`);
 
 --
+-- Chỉ mục cho bảng `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `users_email_unique` (`email`);
+
+--
 -- Chỉ mục cho bảng `xa`
 --
 ALTER TABLE `xa`
@@ -586,7 +619,7 @@ ALTER TABLE `xa`
 -- AUTO_INCREMENT cho bảng `baiviet`
 --
 ALTER TABLE `baiviet`
-  MODIFY `idBaiViet` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idBaiViet` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT cho bảng `canbo`
@@ -604,13 +637,25 @@ ALTER TABLE `chitietdangkyungho`
 -- AUTO_INCREMENT cho bảng `danhmuc`
 --
 ALTER TABLE `danhmuc`
-  MODIFY `idDanhMuc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idDanhMuc` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT cho bảng `dotcuutro`
+--
+ALTER TABLE `dotcuutro`
+  MODIFY `idDotCuuTro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT cho bảng `nhanvien`
 --
 ALTER TABLE `nhanvien`
-  MODIFY `idNhanVien` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `idNhanVien` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT cho bảng `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- Các ràng buộc cho các bảng đã đổ
@@ -620,7 +665,6 @@ ALTER TABLE `nhanvien`
 -- Các ràng buộc cho bảng `baiviet`
 --
 ALTER TABLE `baiviet`
-  ADD CONSTRAINT `FK__BaiViet__idDotCu__0F624AF8` FOREIGN KEY (`idDotCuuTro`) REFERENCES `dotcuutro` (`idDotCuuTro`),
   ADD CONSTRAINT `FK__BaiViet__idNhanV__10566F31` FOREIGN KEY (`idNhanVien`) REFERENCES `nhanvien` (`idNhanVien`);
 
 --
@@ -661,7 +705,6 @@ ALTER TABLE `chitietphieuxuat`
 -- Các ràng buộc cho bảng `dangkyungho`
 --
 ALTER TABLE `dangkyungho`
-  ADD CONSTRAINT `FK__DangKyUng__idDot__59063A47` FOREIGN KEY (`idDotCuuTro`) REFERENCES `dotcuutro` (`idDotCuuTro`),
   ADD CONSTRAINT `FK__DangKyUng__idNgu__5812160E` FOREIGN KEY (`idNguoiUngHo`) REFERENCES `nguoiungho` (`idNguoiUngHo`);
 
 --
@@ -669,12 +712,6 @@ ALTER TABLE `dangkyungho`
 --
 ALTER TABLE `dotcuutro`
   ADD CONSTRAINT `FK__DotCuuTro__idNha__49C3F6B7` FOREIGN KEY (`idNhanVien`) REFERENCES `nhanvien` (`idNhanVien`);
-
---
--- Các ràng buộc cho bảng `dotphanbo`
---
-ALTER TABLE `dotphanbo`
-  ADD CONSTRAINT `FK__DotPhanBo__idDot__4F7CD00D` FOREIGN KEY (`idDotCuuTro`) REFERENCES `dotcuutro` (`idDotCuuTro`);
 
 --
 -- Các ràng buộc cho bảng `hangcuutro`
@@ -694,7 +731,6 @@ ALTER TABLE `hogiadinh`
 --
 ALTER TABLE `phieunhap`
   ADD CONSTRAINT `FK__PhieuNhap__idDan__6383C8BA` FOREIGN KEY (`idDangKyUngHo`) REFERENCES `dangkyungho` (`idDangKyUngHo`),
-  ADD CONSTRAINT `FK__PhieuNhap__idDot__656C112C` FOREIGN KEY (`idDotCuuTro`) REFERENCES `dotcuutro` (`idDotCuuTro`),
   ADD CONSTRAINT `FK__PhieuNhap__idNha__6477ECF3` FOREIGN KEY (`idNhanVien`) REFERENCES `nhanvien` (`idNhanVien`);
 
 --
@@ -702,7 +738,6 @@ ALTER TABLE `phieunhap`
 --
 ALTER TABLE `phieuxuat`
   ADD CONSTRAINT `FK__PhieuXuat__idCan__7D439ABD` FOREIGN KEY (`idCanBo`) REFERENCES `canbo` (`idCanBo`),
-  ADD CONSTRAINT `FK__PhieuXuat__idDot__7B5B524B` FOREIGN KEY (`idDotCuuTro`) REFERENCES `dotcuutro` (`idDotCuuTro`),
   ADD CONSTRAINT `FK__PhieuXuat__idDot__7E37BEF6` FOREIGN KEY (`idDotPhanBo`) REFERENCES `dotphanbo` (`idDotPhanBo`),
   ADD CONSTRAINT `FK__PhieuXuat__idNha__7C4F7684` FOREIGN KEY (`idNhanVien`) REFERENCES `nhanvien` (`idNhanVien`);
 COMMIT;
