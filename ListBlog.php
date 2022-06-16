@@ -11,6 +11,17 @@
     header("location: login.php");
   }
 ?>
+<?php
+    $conn = new mysqli("localhost","root","","quanlylulut");
+    $sql = "SELECT * FROM baiviet";
+    $query = mysqli_query($conn, $sql);
+
+    $result = array();
+    while($row = mysqli_fetch_assoc($query)){
+        $result[] = $row;
+    }
+    $count1 = count($result);
+?>
 
 
 
@@ -162,6 +173,7 @@
             <!-- page title area end -->
             <div>
 <body>
+<form method="POST" class="form-center">
     <div class="content-wrapper" style="min-height: 353px;">
     <section class="content-header">
         <div class="container-fluid">
@@ -187,7 +199,7 @@
                         </div>
                         <div class="row">
                             <div class="col-sm-12">
-                                <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+                                <table  id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
                                     <thead>
                                         <tr role="row">
                                             <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">STT</th>
@@ -209,13 +221,26 @@
                                     </thead>
                                     <tbody>
                                         <?php 
-                                           $conn = new mysqli("localhost","root","","quanlylulut");
-                                           $sql = "SELECT tieuDe, d.tenDotCuuTro, noiDung, image, thoiGian
+                                            if(isset($_GET['pages'])){
+                                                $pages = $_GET['pages'];
+                                            }else{
+                                                $pages = 1;
+                                            }
+                                            $row = 3;
+                                            $from = ($pages - 1) * $row;
+
+
+                                            $conn = new mysqli("localhost","root","","quanlylulut");
+                                            $sql = "SELECT tieuDe, d.tenDotCuuTro, noiDung, image, thoiGian, idBaiViet
                                                 FROM baiviet as b, dotcuutro as d
-                                                where b.idDotCuuTro = d.idDotCuuTro";
-                                           $result = $conn->query($sql);
+                                                where b.idDotCuuTro = d.idDotCuuTro
+                                                LIMIT $from,$row";
+
+
+
+                                            $result = $conn->query($sql);
                                                 $count=0;
-                                           if ($result -> num_rows >  0) {
+                                            if ($result -> num_rows >  0) {
                                               
                                              while ($row = $result->fetch_assoc()) 
                                              {
@@ -230,7 +255,7 @@
                                                   <th><?php echo $row["thoiGian"] ?></th>
 
                                                   
-                                                  <th> <a href="up"Edit</a><a href="editBlog.php?id=<?php echo $row["idBaiViet"] ?>">Edit</a> <a href="up"Edit</a><a href="deleteBlog.php?id=<?php echo $row["idBaiViet"] ?>">Delete</a></th>
+                                                   <th> <a href="up"Edit</a><a href="editBlog.php?id=<?php echo $row["idBaiViet"] ?>">Edit</a> <a href="up"Edit</a><a href="deleteBlog.php?id=<?php echo $row["idBaiViet"] ?>">Delete</a></th>
                                                 
                                                   
                                                 </tr>
@@ -238,7 +263,8 @@
                                              
                                              }
                                            }
-
+                                            $sum_count = $count1;
+                                            $pages = ceil($sum_count / 3);
                                         ?>
                                     </tbody>
 
@@ -246,9 +272,13 @@
                                 <nav aria-label="Page navigation example">
                                   <ul class="pagination justify-content-center">
                                     <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                    <?php 
+                                        for ($i=1; $i <= $pages; $i++) { 
+                                            ?>
+                                            <li class="page-item"><a class="page-link" href="ListBlog.php?pages=<?php echo $i ?>"><?php echo $i ?></a></li>
+                                            <?php
+                                        }
+                                    ?>
                                     <li class="page-item"><a class="page-link" href="#">Next</a></li>
                                   </ul>
                                 </nav>
@@ -285,7 +315,7 @@
         $('#exemple2').DataTable();
     } );
         </script>
-
+</form>
 </body>
 
 
