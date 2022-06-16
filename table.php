@@ -75,7 +75,7 @@
                             
                             <li class="active">
                                 <a href="table.php" aria-expanded="true"><i class="fa fa-table"></i>
-                                    <span>Item Records</span></a>
+                                    <span>Item Succors</span></a>
                                
                             </li>
                             <li >
@@ -142,7 +142,7 @@
                             <h4 class="page-title pull-left">Dashboard</h4>
                             <ul class="breadcrumbs pull-left">
                                 <li><a href="index.php">Home</a></li>
-                                <li><span>Item Records</span></li>
+                                <li><span>Item Succors</span></li>
                             </ul>
                         </div>
                     </div>
@@ -161,48 +161,36 @@
             <!-- page title area end -->
             <div>
             
-     <h1 style="text-align:center">Add Item Here</h1>
             <body>
-<form method="POST" class="form-inline" action="additem.php">
-  <div class="form-group">
-    <label for="name">Product Name</label>
-    <input type="text" class="form-control" name="tenDanhMuc">
-    
-  </div>
-<!--   <div class="form-group">
-    <label for="name">Price</label>
-    <input type="text" class="form-control" name="price">
-  </div>
-  <div class="form-group">
-        <label for="name">Quantity</label>
-        <input type="number" name="quant" id="quant" min="1" max="">
-    </div> -->
-  <button type="submit" class="btn btn-default" name="add">Add item</button>
- 
+<form method="POST" class="main-content-inner" action="additem.php">
+  <div class="col-lg-6 mt-5">
+    <label for="name">Name Succor</label>
+    <input type="text" required="required" class="form-control" name="tenDotCuuTro">
+</br>
+    <button type="submit" class="btn btn-default" name="add">Add item</button>
+</div>
 </form> 
 </body>
             <div class="main-content-inner">
                 <div class="row">
-                   
-                    <!-- Contextual Classes start -->
-                    <div class="col-lg-6 mt-5">
+                    <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="header-title">Category</h4>
+                                <h4 class="header-title">Succor</h4>
                                 <div class="single-table">
                                     <div class="table-responsive">
-                                        <table class="table text-dark text-center">
+                                        <table class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
                                             <thead class="text-uppercase">
                                                 <tr class="table-active">
                                                     <th scope="col">ID</th>
-                                                    <th scope="col">Name</th>
+                                                    <th scope="col">Name Succor</th>
                                                      <th scope="col">Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
             <?php 
                $conn = new mysqli("localhost","root","","quanlylulut");
-               $sql = "SELECT * FROM danhmuc";
+               $sql = "SELECT * FROM dotCuuTro";
                $result = $conn->query($sql);
                     $count=0;
                if ($result -> num_rows >  0) {
@@ -215,9 +203,9 @@
                    
                    <tr>
                     <th><?php echo $count ?></th>
-                      <th><?php echo $row["tenDanhMuc"] ?></th>
+                      <th><?php echo $row["tenDotCuuTro"] ?></th>
                       
-                      <th> <a href="up"Edit</a><a href="edit.php?id=<?php echo $row["idDanhMuc"] ?>">Edit</a> <a href="up"Edit</a><a href="delete.php?id=<?php echo $row["idDanhMuc"] ?>">Delete</a></th>
+                      <th> <a href="up"Edit</a><a href="edit.php?id=<?php echo $row["idDotCuuTro"] ?>">Edit</a> <a href="up"Edit</a><a href="delete.php?id=<?php echo $row["idDotCuuTro"] ?>">Delete</a></th>
                     
                       
                     </tr>

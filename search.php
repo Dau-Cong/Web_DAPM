@@ -2,7 +2,7 @@
 	include("config.php");
 	if(isset($_POST['input'])){
 		$input = $_POST['input'];
-		$query = "SELECT tieuDe, d.tenDotCuuTro, noiDung, image, thoiGian
+		$query = "SELECT tieuDe, d.tenDotCuuTro, noiDung, image, thoiGian, idBaiViet
                                                 FROM baiviet as b, dotcuutro as d
                                                 where b.idDotCuuTro = d.idDotCuuTro
                                                 and  tieuDe Like '{$input}%' or noiDung Like '{$input}%' or image Like '{$input}%' or thoiGian Like '{$input}%' or d.tenDotCuuTro Like '{$input}%' LIMIT 2";
@@ -60,6 +60,8 @@
             </tbody>
         </table>
         <?php
-}
+          }else{
+               echo "<h6 class='text-danger text-center mt-3'>No data Found</h6>";
+          }
 	}	
 ?>

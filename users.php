@@ -76,7 +76,7 @@
                             
                             <li >
                                 <a href="table.php" aria-expanded="true"><i class="fa fa-table"></i>
-                                <span>Item Records</span></a>
+                                <span>Item Succors</span></a>
                                
                             </li>
                             <li >
@@ -108,80 +108,87 @@
 
         
         <!-- main content area start -->
-        <div class="main-content">
-            <!-- header area start -->
-            <div class="header-area">
-                <div class="row align-items-center">
-                    <!-- nav and search button -->
-                    <div class="col-md-6 col-sm-8 clearfix">
-                        <div class="nav-btn pull-left">
-                            <span></span>
-                            <span></span>
-                            <span></span>
+            <div class="main-content">
+                <!-- header area start -->
+                <div class="header-area">
+                    <div class="row align-items-center">
+                        <!-- nav and search button -->
+                        <div class="col-md-6 col-sm-8 clearfix">
+                            <div class="nav-btn pull-left">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+    <!--                         <div class="search-box pull-left">
+                                <form action="#">
+                                    <input type="text" name="search" placeholder="Search..." required>
+                                    <i class="ti-search"></i>
+                                </form>
+                            </div> -->
                         </div>
-<!--                         <div class="search-box pull-left">
-                            <form action="#">
-                                <input type="text" name="search" placeholder="Search..." required>
-                                <i class="ti-search"></i>
-                            </form>
-                        </div> -->
-                    </div>
-                    
-                    <!-- profile info & task notification-->
-                    <div class="col-md-6 col-sm-4 clearfix">
                         
+                        <!-- profile info & task notification-->
+                        <div class="col-md-6 col-sm-4 clearfix">
+                            
+                        </div>
                     </div>
                 </div>
-            </div>
-            
-            <!-- header area end -->
-            <!-- page title area start -->
-            <div class="page-title-area">
-                <div class="row align-items-center">
-                    <div class="col-sm-6">
-                        <div class="breadcrumbs-area clearfix">
-                            <h4 class="page-title pull-left">Dashboard</h4>
-                            <ul class="breadcrumbs pull-left">
-                                <li><a href="index.php">Home</a></li>
-                                <li><span>Manage Users</span></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-sm-6 clearfix">
-                        <div class="user-profile pull-right">
-                            <img class="avatar user-thumb" src="assets/images/author/avatar.png" alt="avatar">
-                            <h4 class="user-name dropdown-toggle" data-toggle="dropdown"><?php echo $_SESSION['username']; ?> <i class="fa fa-angle-down"></i></h4>
-                            <div class="dropdown-menu">
-                                
-                               <a class="dropdown-item" href="index.php?logout='1'">Log Out</a>
+                
+                <!-- header area end -->
+                <!-- page title area start -->
+                <div class="page-title-area">
+                    <div class="row align-items-center">
+                        <div class="col-sm-6">
+                            <div class="breadcrumbs-area clearfix">
+                                <h4 class="page-title pull-left">Dashboard</h4>
+                                <ul class="breadcrumbs pull-left">
+                                    <li><a href="index.php">Home</a></li>
+                                    <li><span>Manage Users</span></li>
+                                </ul>
                             </div>
                         </div>
-                    </div>
+                        <div class="col-sm-6 clearfix">
+                            <div class="user-profile pull-right">
+                                <img class="avatar user-thumb" src="assets/images/author/avatar.png" alt="avatar">
+                                <h4 class="user-name dropdown-toggle" data-toggle="dropdown"><?php echo $_SESSION['username']; ?> <i class="fa fa-angle-down"></i></h4>
+                                <div class="dropdown-menu">
+                                   <a class="dropdown-item" href="index.php?logout='1'">Log Out</a>
+                                </div>
+                            </div>
+                        </div>
+                   </div>
                 </div>
-            </div>
-            <!-- page title area end -->
-            <div>
+                <!-- page title area end -->
+                <div>
             
-     <h1 style="text-align:center">Add User Here</h1>
 <body>
 <form method="POST" class="form-center">
-<div class="row">
-  <div class="col-md-12">
-    <div class="panel panel-default">
-      <div class="panel-heading clearfix">
-        <strong>
+    <div class="content-wrapper" style="min-height: 353px;">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-7">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item active"><a href="add_user.php">Add New User</a></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
           <span class="glyphicon glyphicon-th"></span>
-          <span >Users</span>
-       </strong>
-         <a href="add_user.php" class="btn pull-right">Add New User</a>
-      </div>
-     <div class="panel-body">
-      <table class="table table-bordered table-striped">
-        <thead>
-          <tr>
+          <h4 class="header-title">Users</h4>
+     <div class="single-table">
+      <div class="table-responsive">
+      <table class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+        <thead class="text-uppercase">
+          <tr class="table-active"> 
             <th >STT</th>
             <th >Name </th>
-            <th >email</th>
+            <th >Email</th>
             <th >SDT</th>
             <th >Adress</th>
             <th >Actions</th>
@@ -225,6 +232,8 @@
     </div>
   </div>
 </div>
+</div>
+      </div>
 </form>
 <html>
 <head>

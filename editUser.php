@@ -60,28 +60,28 @@ echo "No results!";
 <tr>
 <td width="179"><b><font >Name<em>*</em></font></b></td>
 <td><label>
-<input type="text" name="tenNhanVien" value="<?php echo $name; ?>" />
+<input type="text" required="required" name="tenNhanVien" value="<?php echo $name; ?>" />
 </label></td>
 </tr>
 
 <tr>
 <td width="179"><b><font color='#663300'>Email<em>*</em></font></b></td>
 <td><label>
-<input type="text" name="email" value="<?php echo $email ?>" />
+<input type="text" required="required" name="email" value="<?php echo $email ?>" />
 </label></td>
 </tr>
 
 <tr>
 <td width="179"><b><font color='#663300'>SDT<em>*</em></font></b></td>
 <td><label>
-<input type="text" name="soDT" value="<?php echo $SDT;?>" />
+<input type="text" required="required" name="soDT" value="<?php echo $SDT;?>" />
 </label></td>
 </tr>
 
 <tr>
 <td width="179"><b><font color='#663300'>Adress<em>*</em></font></b></td>
 <td><label>
-<input type="text" name="diaChi" value="<?php echo $Adress;?>" />
+<input type="text" required="required" name="diaChi" value="<?php echo $Adress;?>" />
 </label></td>
 </tr>
 

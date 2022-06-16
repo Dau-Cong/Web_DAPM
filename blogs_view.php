@@ -83,7 +83,7 @@
                             
                             <li class="active">
                                 <a href="table.php" aria-expanded="true"><i class="fa fa-table"></i>
-                                    <span>Item Records</span></a>
+                                    <span>Item Succors</span></a>
                                
                             </li>
                             <li >

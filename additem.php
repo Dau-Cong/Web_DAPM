@@ -30,11 +30,11 @@ if (mysqli_connect_errno())
 if (isset($_POST['add'])) {
   // receive all input values from the form
   echo "connect";
-  $item_name=mysqli_real_escape_string($db, $_POST['tenDanhMuc']);
+  $item_name=mysqli_real_escape_string($db, $_POST['tenDotCuuTro']);
   // $item_price=mysqli_real_escape_string($db, $_POST['price']);
   // $quant=mysqli_real_escape_string($db, $_POST['quant']);
   
-    $query = "INSERT INTO danhmuc (tenDanhMuc) 
+    $query = "INSERT INTO dotcuutro (tenDotCuuTro) 
           VALUES('$item_name')";
       if(mysqli_query($db, $query))
       {

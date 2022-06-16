@@ -88,7 +88,7 @@
                             
                             <li >
                                 <a href="table.php" aria-expanded="true"><i class="fa fa-table"></i>
-                                <span>Item Records</span></a>
+                                <span>Item Succors</span></a>
                                
                             </li>
                             <li >
@@ -155,7 +155,7 @@
                             <h4 class="page-title pull-left">Dashboard</h4>
                             <ul class="breadcrumbs pull-left">
                                 <li><a href="index.php">Home</a></li>
-                                <li><span>ListBlog</span></li>
+                                <li><span>List Blog</span></li>
                             </ul>
                         </div>
                     </div>
@@ -179,10 +179,9 @@
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
-                <div class="col-sm-7">
+                <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="index.php">Home</a></li>
-                        <li class="breadcrumb-item active">Danh sách chuyên mục</li>
+                        <li class="breadcrumb-item active">List Blog</li>
                     </ol>
                 </div>
             </div>

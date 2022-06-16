@@ -66,7 +66,7 @@ echo "No results!";
 <td width="179"><b><font >Tiêu đề<em>*</em></font></b></td>
 
 <td><label>
-<input type="text" name="tieuDe" value="<?php echo $tieuDe; ?>" />
+<input type="text" required="required" name="tieuDe" value="<?php echo $tieuDe; ?>" />
 </label></td>
 </tr>
 
@@ -96,7 +96,7 @@ echo "No results!";
 <tr>
 <td width="179"><b><font color='#663300'>Nội dung<em>*</em></font></b></td>
 <td><label>
-<input type="text" name="noiDung" value="<?php echo $noiDung;?>" />
+<input type="text" required="required" name="noiDung" value="<?php echo $noiDung;?>" />
 </label></td>
 </tr>
 

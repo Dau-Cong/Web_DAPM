@@ -11,7 +11,7 @@ if (mysqli_connect_errno())
 if (isset($_GET['id']))
 {
 
-$result = mysqli_query($db,"DELETE FROM danhmuc WHERE idDanhMuc=".$_GET['id']);
+$result = mysqli_query($db,"DELETE FROM dotCuuTro WHERE idDotCuuTro=".$_GET['id']);
 if($result==true)
 	echo "sucess";
 header("Location:table.php");
