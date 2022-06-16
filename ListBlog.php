@@ -143,7 +143,7 @@
                             <h4 class="page-title pull-left">Dashboard</h4>
                             <ul class="breadcrumbs pull-left">
                                 <li><a href="index.php">Home</a></li>
-                                <li><span>Manage Users</span></li>
+                                <li><span>ListBlog</span></li>
                             </ul>
                         </div>
                     </div>
@@ -166,12 +166,9 @@
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
-                <div class="col-sm-6">
-                    <h1>Danh sách chuyên mục</h1>
-                </div>
-                <div class="col-sm-6">
+                <div class="col-sm-7">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item"><a href="index.php">Home</a></li>
                         <li class="breadcrumb-item active">Danh sách chuyên mục</li>
                     </ol>
                 </div>
@@ -194,57 +191,67 @@
                                     <thead>
                                         <tr role="row">
                                             <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">STT</th>
-                                            <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Ảnh</th>
+                                    
                                             <th style="text-align: center;" class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Tiêu đề</th>
-                                            <th style="text-align: center;" class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">View</th>
-                                            <th style="text-align: center;" class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Chuyên mục</th>
-                                            <th style="text-align: center;" class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Ngươi tạo</th>
+
+                                            <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Đợt cứu trợ</th>
+
+                                            <th style="text-align: center;" class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Nội dung</th>
+
+                                            <th style="text-align: center;" class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Hình ảnh</th>
+
+
                                             <th style="text-align: center;" class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Ngày đăng</th>
-                                            <th style="text-align: center;" class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Sửa</th>
-                                            <th style="text-align: center;" class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Xóa</th>
+
+                                            <th style="text-align: center;" class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Action</th>
                                             
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>
-                                                hình ảnh
-                                            </td>
-                                            <td>
-                                                Sửa lỗi không vào được game trong Đấu Trường Chân Lý (ĐTCL)
-                                            </td>
-                                            <td>
-                                                1
-                                            </td>
-                                            <td>
-                                                Thể thao
-                                            </td>
-                                            <td>
-                                                admin
-                                            </td>
-                                            <td>
-                                                19/02/2020
-                                            </td>
-                                            <td style="text-align: center;">
-                                                <span class="badge bg-primary">
-                                                    <a href="">
-                                                        <ion-icon name="create-outline"></ion-icon>
-                                                    </a>
-                                                </span>
+                                        <?php 
+                                           $conn = new mysqli("localhost","root","","quanlylulut");
+                                           $sql = "SELECT tieuDe, d.tenDotCuuTro, noiDung, image, thoiGian
+                                                FROM baiviet as b, dotcuutro as d
+                                                where b.idDotCuuTro = d.idDotCuuTro";
+                                           $result = $conn->query($sql);
+                                                $count=0;
+                                           if ($result -> num_rows >  0) {
+                                              
+                                             while ($row = $result->fetch_assoc()) 
+                                             {
+                                                  $count=$count+1;
+                                               ?>
+                                               <tr>
+                                                <th><?php echo $count ?></th>
+                                                  <th><?php echo $row["tieuDe"] ?></th>
+                                                  <th><?php echo $row["tenDotCuuTro"] ?></th>
+                                                  <th><?php echo $row["noiDung"]  ?></th>
+                                                  <th><?php echo "<img src='img/".$row['image']."' />"  ?></th>
+                                                  <th><?php echo $row["thoiGian"] ?></th>
+
+                                                  
+                                                  <th> <a href="up"Edit</a><a href="editBlog.php?id=<?php echo $row["idBaiViet"] ?>">Edit</a> <a href="up"Edit</a><a href="deleteBlog.php?id=<?php echo $row["idBaiViet"] ?>">Delete</a></th>
                                                 
-                                            </td>
-                                            <td style="text-align: center;">
-                                                <span class="badge bg-danger">
-                                                    <a href="">
-                                                        <ion-icon name="trash-outline"></ion-icon>
-                                                    </a>
-                                                </span>
-                                            </td>
-                                        </tr>
+                                                  
+                                                </tr>
+                                        <?php
+                                             
+                                             }
+                                           }
+
+                                        ?>
                                     </tbody>
+
                                 </table>
-                            </div>
+                                <nav aria-label="Page navigation example">
+                                  <ul class="pagination justify-content-center">
+                                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                                  </ul>
+                                </nav>
                         </div>
 
                     </div>
@@ -255,6 +262,7 @@
     </section>
 </div>
     </div>
+
     <!-- page container area end -->
     <!-- offset area start -->
    
@@ -272,6 +280,13 @@
     <!-- others plugins -->
     <script src="assets/js/plugins.js"></script>
     <script src="assets/js/scripts.js"></script>
+    <script>
+        $(document).ready( function () {
+        $('#exemple2').DataTable();
+    } );
+        </script>
+
 </body>
+
 
 </html>

@@ -19,6 +19,7 @@ $tieuDe = "";
 $idDotCuuTro    = "";
 $noiDung    = "";
 $tenDotCuuTro = "";
+$image ="";
 
 
 // connect to the database
@@ -35,9 +36,10 @@ if (isset($_POST['add'])) {
   $idDotCuuTro=mysqli_real_escape_string($db, $_POST['tenDotCuuTro']);
   $tieuDe=mysqli_real_escape_string($db, $_POST['tieuDe']);
   $noiDung=mysqli_real_escape_string($db, $_POST['noiDung']);
+  $image=mysqli_real_escape_string($db, $_POST['image']);
   
-    $query = "INSERT INTO baiviet (tieuDe,idDotCuuTro,noiDung) 
-          VALUES('$tieuDe','$idDotCuuTro','$noiDung')";
+    $query = "INSERT INTO baiviet (tieuDe,idDotCuuTro,noiDung,image) 
+          VALUES('$tieuDe','$idDotCuuTro','$noiDung','$image')";
       if(mysqli_query($db, $query))
       {
       echo "<script>alert('Successfully stored');</script>";
@@ -47,7 +49,7 @@ if (isset($_POST['add'])) {
         echo"<script>alert('Somthing wrong!!!');</script>";
     }
     
-    header('location: blogs_view.php');
+    header('location: ListBlog.php');
   
 }
 ?>

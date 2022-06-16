@@ -175,7 +175,7 @@
             <div class="row mb-2">
                 <div class="col-sm-7">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Bài viết</a></li>
+                        <li class="breadcrumb-item"><a href="index.php">Bài viết</a></li>
                         <li class="breadcrumb-item active">Admin</li>
                     </ol>
                 </div>
@@ -202,6 +202,10 @@
                             }
                             ?>
                         </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Hình ảnh</label>
+                        <input type="file" required="required" name="image" class="form-control" accept="img/*">
                     </div>
                     <div class="form-group">
                         <label>Nội dung</label>
