@@ -114,7 +114,7 @@
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="#" aria-expanded="true">
+                                        <a href="ListBlog.php" aria-expanded="true">
                                             <span>List Blog</span>
                                         </a>
                                     </li>

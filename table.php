@@ -89,7 +89,7 @@
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="#" aria-expanded="true">
+                                        <a href="ListBlog.php" aria-expanded="true">
                                             <span>List Blog</span>
                                         </a>
                                     </li>
@@ -188,7 +188,7 @@
                     <div class="col-lg-6 mt-5">
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="header-title">Catogery</h4>
+                                <h4 class="header-title">Category</h4>
                                 <div class="single-table">
                                     <div class="table-responsive">
                                         <table class="table text-dark text-center">
@@ -197,9 +197,6 @@
                                                     <th scope="col">ID</th>
                                                     <th scope="col">Name</th>
                                                      <th scope="col">Action</th>
-                                                     
-
-                                                    
                                                 </tr>
                                             </thead>
                                             <tbody>

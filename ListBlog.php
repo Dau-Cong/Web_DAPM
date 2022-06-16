@@ -11,11 +11,6 @@
     header("location: login.php");
   }
 ?>
-<?php
-    $conn = new mysqli("localhost","root","","quanlylulut");
-    $sql = "SELECT * FROM dotCuuTro";
-    $result = $conn->query($sql);
-?>
 
 
 
@@ -26,7 +21,6 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>DAPM</title>
-
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="assets/images/icon/favicon.ico">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -44,8 +38,6 @@
     <link rel="stylesheet" href="assets/css/responsive.css">
     <!-- modernizr css -->
     <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
-    <script src="admin/ckeditor/ckeditor.js"></script>
-
 </head>
 
 <body>
@@ -72,18 +64,19 @@
                     <nav>
                         <ul class="metismenu" id="menu">
                             <li>
-                                <a href="index.php" aria-expanded="true"><i class="ti-dashboard"></i><span>dashboard</span></a>
+                                <a href="index.php" aria-expanded="true"><i class="ti-dashboard"></i>
+                                <span>dashboard</span></a>
                                 
                             </li>
-                             <li class="active">
+                            
+                            <li >
                                 <a href="users.php" aria-expanded="true"><i class="ti-user"></i>
                                 <span>Manage Users</span></a>
                             </li>
-                           
                             
-                            <li class="active">
+                            <li >
                                 <a href="table.php" aria-expanded="true"><i class="fa fa-table"></i>
-                                    <span>Item Records</span></a>
+                                <span>Item Records</span></a>
                                
                             </li>
                             <li >
@@ -150,7 +143,7 @@
                             <h4 class="page-title pull-left">Dashboard</h4>
                             <ul class="breadcrumbs pull-left">
                                 <li><a href="index.php">Home</a></li>
-                                <li><span>Add Blog</span></li>
+                                <li><span>Manage Users</span></li>
                             </ul>
                         </div>
                     </div>
@@ -169,61 +162,98 @@
             <!-- page title area end -->
             <div>
 <body>
-<div class="content-wrapper" style="min-height: 353px;">
-    <div class="content-header">
+    <div class="content-wrapper" style="min-height: 353px;">
+    <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
-                <div class="col-sm-7">
+                <div class="col-sm-6">
+                    <h1>Danh sách chuyên mục</h1>
+                </div>
+                <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Bài viết</a></li>
-                        <li class="breadcrumb-item active">Admin</li>
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">Danh sách chuyên mục</li>
                     </ol>
                 </div>
             </div>
         </div>
-    </div>
-    <section class="content">
-        <div class="container-fluid">
-            <form method="POST" action="addBlog.php" >
+    </section>
+    <section>
+        <div class="col-12">
+            <div class="card">
+                <!-- /.card-header -->
                 <div class="card-body">
-                    <div class="form-group">
-                        <label>Tiêu đề</label>
-                        <input type="text" required="required" name="tieuDe" class="form-control" placeholder="Tên tiêu đề">
+                    <div id="example2_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6"></div>
+                            <div class="col-sm-12 col-md-6"></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+                                    <thead>
+                                        <tr role="row">
+                                            <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">STT</th>
+                                            <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Ảnh</th>
+                                            <th style="text-align: center;" class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending">Tiêu đề</th>
+                                            <th style="text-align: center;" class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">View</th>
+                                            <th style="text-align: center;" class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Chuyên mục</th>
+                                            <th style="text-align: center;" class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Ngươi tạo</th>
+                                            <th style="text-align: center;" class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Ngày đăng</th>
+                                            <th style="text-align: center;" class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Sửa</th>
+                                            <th style="text-align: center;" class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending">Xóa</th>
+                                            
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>
+                                                hình ảnh
+                                            </td>
+                                            <td>
+                                                Sửa lỗi không vào được game trong Đấu Trường Chân Lý (ĐTCL)
+                                            </td>
+                                            <td>
+                                                1
+                                            </td>
+                                            <td>
+                                                Thể thao
+                                            </td>
+                                            <td>
+                                                admin
+                                            </td>
+                                            <td>
+                                                19/02/2020
+                                            </td>
+                                            <td style="text-align: center;">
+                                                <span class="badge bg-primary">
+                                                    <a href="">
+                                                        <ion-icon name="create-outline"></ion-icon>
+                                                    </a>
+                                                </span>
+                                                
+                                            </td>
+                                            <td style="text-align: center;">
+                                                <span class="badge bg-danger">
+                                                    <a href="">
+                                                        <ion-icon name="trash-outline"></ion-icon>
+                                                    </a>
+                                                </span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
                     </div>
-                    <div class="form-group">
-                        <label>Đợt cứu trợ</label>
-                        <select name="tenDotCuuTro" class="form-control select">
-                            <?php
-                            while($r = mysqli_fetch_array($result))
-                            {
-                                ?>
-                                <option value="<?php echo $r['idDotCuuTro'] ?>"><?php echo $r['tenDotCuuTro'] ?></option>
-                                <?php
-                            }
-                            ?>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Nội dung</label>
-                        <textarea required="required" name="noiDung" id="editor2" class="textarea" placeholder="Place some text here"
-                          style="width: 100%; height: 500px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
-                        <script>
-                            CKEDITOR.replace( 'editor2' );
-                        </script>
-                    </div>
-                    <button type="submit" name="add" class="btn btn-primary">Thêm</button>
                 </div>
-            </form>
+                <!-- /.card-body -->
+            </div>
         </div>
     </section>
 </div>
-    
-
-
-
-
-
-
     </div>
     <!-- page container area end -->
     <!-- offset area start -->
