@@ -85,7 +85,10 @@
                                 <a href="users.php" aria-expanded="true"><i class="ti-user"></i>
                                 <span>Manage Users</span></a>
                             </li>
-                            
+                            <li >
+                                <a href="client.php" aria-expanded="true"><i class="ti-user"></i>
+                                <span>Manage Supporter</span></a>
+                             </li>
                             <li >
                                 <a href="table.php" aria-expanded="true"><i class="fa fa-table"></i>
                                 <span>Item Succors</span></a>

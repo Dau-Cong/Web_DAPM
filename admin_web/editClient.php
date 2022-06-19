@@ -12,6 +12,26 @@
   }
 ?>
 
+<?php
+$db = mysqli_connect('localhost', 'root', '', 'quanlylulut');
+if (mysqli_connect_errno())
+    {
+    echo "Failed to connect to MySQL: " . mysqli_connect_error();
+    }
+?>
+
+<?php
+if (isset($_GET['id'])  && $_GET['id'] > 0)
+{
+
+$id = $_GET['id'];
+$sql = "SELECT * FROM nguoiungho WHERE idNguoiUngHo=$id";
+$result = mysqli_query($db,$sql);
+
+$row = mysqli_fetch_array($result);
+
+}
+?>
 
 
 <!doctype html>
@@ -38,13 +58,11 @@
     <link rel="stylesheet" href="assets/css/responsive.css">
     <!-- modernizr css -->
     <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
+    <script src="admin/ckeditor/ckeditor.js"></script>
 </head>
 
 <body>
-    <!--[if lt IE 8]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-    <!-- preloader area start -->
+   
     <div id="preloader">
         <div class="loader"></div>
     </div>
@@ -64,18 +82,24 @@
                     <nav>
                         <ul class="metismenu" id="menu">
                             <li>
-                                <a href="index.php" aria-expanded="true"><i class="ti-dashboard"></i><span>dashboard</span></a>
+                                <a href="index.php" aria-expanded="true"><i class="ti-dashboard"></i>
+                                <span>dashboard</span></a>
                                 
                             </li>
-                             <li class="active">
+                            
+                            <li >
                                 <a href="users.php" aria-expanded="true"><i class="ti-user"></i>
                                 <span>Manage Users</span></a>
                             </li>
-                           
+
+                            <li >
+                                <a href="client.php" aria-expanded="true"><i class="ti-user"></i>
+                                <span>Manage Supporter</span></a>
+                            </li>
                             
-                            <li class="active">
+                            <li >
                                 <a href="table.php" aria-expanded="true"><i class="fa fa-table"></i>
-                                    <span>Item Succors</span></a>
+                                <span>Item Records</span></a>
                                
                             </li>
                             <li >
@@ -89,7 +113,7 @@
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="ListBlog.php" aria-expanded="true">
+                                        <a href="#" aria-expanded="true">
                                             <span>List Blog</span>
                                         </a>
                                     </li>
@@ -118,15 +142,7 @@
                             <span></span>
                             <span></span>
                         </div>
-<!--                         <div class="search-box pull-left">
-                            <form action="#">
-                                <input type="text" name="search" placeholder="Search..." required>
-                                <i class="ti-search"></i>
-                            </form>
-                        </div> -->
-                    </div>
-                    
-                    <!-- profile info & task notification-->
+
                     <div class="col-md-6 col-sm-4 clearfix">
                         
                     </div>
@@ -142,7 +158,7 @@
                             <h4 class="page-title pull-left">Dashboard</h4>
                             <ul class="breadcrumbs pull-left">
                                 <li><a href="index.php">Home</a></li>
-                                <li><span>Item Succors</span></li>
+                                <li><span>Manage Client</span></li>
                             </ul>
                         </div>
                     </div>
@@ -161,92 +177,100 @@
             <!-- page title area end -->
             <div>
             
-            <body>
-<form method="POST" class="main-content-inner" action="additem.php">
-  <div class="col-lg-6 mt-5">
-    <label for="name">Name Succor</label>
-    <input type="text" required="required" class="form-control" name="tenDotCuuTro">
-</br>
-    <button type="submit" class="btn btn-default" name="add">Add item</button>
-</div>
-</form> 
-</body>
-            <div class="main-content-inner">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="header-title">Succor</h4>
-                                <div class="single-table">
-                                    <div class="table-responsive">
-                                        <table class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
-                                            <thead class="text-uppercase">
-                                                <tr class="table-active">
-                                                    <th scope="col">ID</th>
-                                                    <th scope="col">Name Succor</th>
-                                                     <th scope="col">Action</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-            <?php 
-               $conn = new mysqli("localhost","root","","quanlylulut");
-               $sql = "SELECT * FROM dotCuuTro";
-               $result = $conn->query($sql);
-                    $count=0;
-               if ($result -> num_rows >  0) {
-                  
-                 while ($row = $result->fetch_assoc()) 
-                 {
-                      $count=$count+1;
-                   ?>
-                  
-                   
-                   <tr>
-                    <th><?php echo $count ?></th>
-                      <th><?php echo $row["tenDotCuuTro"] ?></th>
-                      
-                      <th> <a href="up"Edit</a><a href="edit.php?id=<?php echo $row["idDotCuuTro"] ?>">Edit</a> <a href="up"Edit</a><a href="delete.php?id=<?php echo $row["idDotCuuTro"] ?>">Delete</a></th>
-                    
-                      
-                    </tr>
-            <?php
-                 
-                 }
-               }
-
-            ?>
-
-                                            </tbody>
-                                        </table>
-           
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div>
-
-
-</div>   
+    
+<body>
+<div class="content-wrapper" style="min-height: 353px;">
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-7">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="index.php">Edit Client</a></li>
+                        <li class="breadcrumb-item active">Admin</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="content">
+        <div class="container-fluid">
+        
+            <form method="POST" action="updateClient.php" >
+                <div class="card-body">
+                <input type="hidden" name="id" value="<?php echo $row['idNguoiUngHo'] ?>"/>
+                <div class="form-group">
+                        <label>Tên tài khoản</label>
+                        <input type="text" required="required" name="tenTK" class="form-control" placeholder="Tên khách hàng" value="<?php echo $row['tenTaiKhoan'] ?>">
                     </div>
-                    <!-- Contextual Classes end -->
-                   
-        <!-- main content area end -->
-      
+                    <div class="form-group">
+                        <label>Tên khách hàng</label>
+                        <input type="text" required="required" name="tenKH" class="form-control" placeholder="Tên khách hàng"value="<?php echo $row['tenNguoiUngHo'] ?>" >
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="text" required="required" name="email" class="form-control" placeholder="Email" value="<?php echo $row['email'] ?>">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Số điện thoại</label>
+                        <input type="text" required="required" name="sodienthoai" class="form-control" placeholder="Số điện thoại" value="<?php echo $row['soDT'] ?>">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Giới Tính</label>
+                        <select name="gioitinh" class="form-control select">
+                            <option value="1" 
+                            <?php 
+                                if($row['gioiTinh'] ==1){
+                                    echo 'selected="selected"';
+                                }
+                                ?>
+                            >
+                                Nam
+                            </option>
+                            <option value="0" 
+                                <?php 
+                                if($row['gioiTinh'] ==1){
+                                    echo 'selected="selected"';
+                                }
+                                ?>
+                            >
+                                    Nữ
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Địa chỉ</label>
+                        <input type="text" required="required" name="diachi" class="form-control" placeholder="Địa chỉ" value="<?php echo $row['diaChi'] ?>">
+                    </div>
+                    <div class="form-group">
+                        <label>Đơn vị</label>
+                        <input type="text" required="required" name="donvi" class="form-control" placeholder="Đơn vị" value="<?php echo $row['donVi'] ?>">
+                    </div>
+                    <div class="form-group">
+                        <label>Ngày sinh</label>
+                        <input type="text" required="required" name="ngaysinh" class="form-control" placeholder="Ngày sinh" value="<?php echo $row['ngaySinh'] ?>">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Trạng thái</label>
+                        <input type="text" required="required" name="trangthai" class="form-control" placeholder="Trạng thái" value="<?php echo $row['trangThai'] ?>">
+                    </div>
+                    
+                    <button type="submit" name="update" class="btn btn-primary">Cập Nhập</button>
+                </div>
+            </form>
+        </div>
+    </section>
+</div>
 <html>
 <head>
-    <title>Add Item</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 </head>
 
 </html>
-    
-
-
-
-
-
-
     </div>
     <!-- page container area end -->
     <!-- offset area start -->
@@ -266,5 +290,7 @@
     <script src="assets/js/plugins.js"></script>
     <script src="assets/js/scripts.js"></script>
 </body>
+
+
 
 </html>

@@ -2,20 +2,45 @@
   session_start(); 
 
   if (!isset($_SESSION['username'])) {
-    $_SESSION['msg'] = "You must log in first";
-    header('location: login.php');
+  	$_SESSION['msg'] = "You must log in first";
+  	header('location: login.php');
   }
   if (isset($_GET['logout'])) {
-    session_destroy();
-    unset($_SESSION['username']);
-    header("location: login.php");
+  	session_destroy();
+  	unset($_SESSION['username']);
+	unset($_SESSION['full_name']);
+	header("location: table.php");
   }
 ?>
-<?php
-    $conn = new mysqli("localhost","root","","quanlylulut");
-    $sql = "SELECT * FROM dotCuuTro";
-    $result = $conn->query($sql);
-?>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>DAPM</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" href="Inventmng/srtdash/assets/bootstrap.min.css">
+</head>
+<body>
+
+<div class="content">
+  	<!-- notification message -->
+  	<?php if (isset($_SESSION['success'])) : ?>
+      <div class="error success" >
+      	<h3>
+          <?php 
+          	echo $_SESSION['success']; 
+          	unset($_SESSION['success']);
+          ?>
+      	</h3>
+      </div>
+  	<?php endif ?>
+
+    <!-- logged in user information -->
+   
+</div>
+<script>src="srtdash/assets/js/vendor/jquery-2.2.4.min.js" </script>
+<script>src="srtdash/assets/js/vendor/modernizr-2.8.3.min.js" </script>
+</body>
+</html>
 
 
 
@@ -26,7 +51,6 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>DAPM</title>
-
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" type="image/png" href="assets/images/icon/favicon.ico">
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -44,8 +68,6 @@
     <link rel="stylesheet" href="assets/css/responsive.css">
     <!-- modernizr css -->
     <script src="assets/js/vendor/modernizr-2.8.3.min.js"></script>
-    <script src="admin/ckeditor/ckeditor.js"></script>
-
 </head>
 
 <body>
@@ -57,7 +79,6 @@
         <div class="loader"></div>
     </div>
     <!-- preloader area end -->
-    
     <!-- page container area start -->
     <div class="page-container">
         <!-- sidebar menu area start -->
@@ -71,20 +92,20 @@
                 <div class="menu-inner">
                     <nav>
                         <ul class="metismenu" id="menu">
-                            <li>
+                            <li class="active">
                                 <a href="index.php" aria-expanded="true"><i class="ti-dashboard"></i><span>dashboard</span></a>
-                                
                             </li>
-                             <li class="active">
+                            <li>
                                 <a href="users.php" aria-expanded="true"><i class="ti-user"></i>
                                 <span>Manage Users</span></a>
                             </li>
-                           
-                            
-                            <li class="active">
+                            <li >
+                                <a href="client.php" aria-expanded="true"><i class="ti-user"></i>
+                                <span>Manage supporter</span></a>
+                            </li>
+                            <li>
                                 <a href="table.php" aria-expanded="true"><i class="fa fa-table"></i>
-                                    <span>Item Succors</span></a>
-                               
+                                <span>Item Succors</span></a>
                             </li>
                             <li >
                                 <a href="#" aria-expanded="true"><i class="fa fa-rss"></i>
@@ -103,17 +124,17 @@
                                     </li>
                                 </ul>
                             </li>
-                            
                            
+                            
+                          
+                                </ul>
+                            </li>
                         </ul>
                     </nav>
                 </div>
             </div>
         </div>
         <!-- sidebar menu area end -->
-
-
-        
         <!-- main content area start -->
         <div class="main-content">
             <!-- header area start -->
@@ -133,14 +154,16 @@
                             </form>
                         </div> -->
                     </div>
-                    
-                    <!-- profile info & task notification-->
+                    <!-- profile info & task notification -->
                     <div class="col-md-6 col-sm-4 clearfix">
-                        
+                        <ul class="notification-area pull-right">
+                           
+                            
+        
+                        </ul>
                     </div>
                 </div>
             </div>
-            
             <!-- header area end -->
             <!-- page title area start -->
             <div class="page-title-area">
@@ -150,88 +173,55 @@
                             <h4 class="page-title pull-left">Dashboard</h4>
                             <ul class="breadcrumbs pull-left">
                                 <li><a href="index.php">Home</a></li>
-                                <li><span>Add Blog</span></li>
+                                <li><span>Dashboard</span></li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-sm-6 clearfix">
                         <div class="user-profile pull-right">
                             <img class="avatar user-thumb" src="assets/images/author/avatar.png" alt="avatar">
-                            <h4 class="user-name dropdown-toggle" data-toggle="dropdown"><?php echo $_SESSION['username']; ?> <i class="fa fa-angle-down"></i></h4>
-                            <div class="dropdown-menu">
-                                
-                               <a class="dropdown-item" href="index.php?logout='1'">Log Out</a>
+                            <h4 class="user-name dropdown-toggle" data-toggle="dropdown"><?php echo $_SESSION['username']?> <i class="fa fa-angle-down"></i></h4>
+                            <div class="dropdown-menu">  
+							<a class="dropdown-item" href="index.php?logout='1'">Log Out</a>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <!-- page title area end -->
-            <div>
-<body>
-<div class="content-wrapper" style="min-height: 353px;">
-    <div class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-7">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="index.php">Bài viết</a></li>
-                        <li class="breadcrumb-item active">Admin</li>
-                    </ol>
-                </div>
+          <div>
+		
+		 <?php  if (isset($_SESSION['first_name']) ) : ?>
+		<h2 style="text-align:center"> Welcome <strong><?php echo $_SESSION['first_name']; echo " " ;echo $_SESSION['last_name'];?></strong></h2>
+		
+		<?php endif ?>
+		<!-- <img src="image.jpg" alt="welcome " style="width:100%"> -->
+		
+		</div>
+               
+                
+                    
+        </div>
+		
+        <!-- main content area end -->
+        <!-- footer area start-->
+        <footer>
+            <div class="footer-area">
+                <a href="#">© Welcome to Hoa Vang - Da Nang flood management system admin page</a>
             </div>
-        </div>
-    </div>
-    <section class="content">
-        <div class="container-fluid">
-            <form method="POST" action="addBlog.php" >
-                <div class="card-body">
-                    <div class="form-group">
-                        <label>Tiêu đề</label>
-                        <input type="text" required="required" name="tieuDe" class="form-control" placeholder="Tên tiêu đề">
-                    </div>
-                    <div class="form-group">
-                        <label>Đợt cứu trợ</label>
-                        <select name="tenDotCuuTro" class="form-control select">
-                            <?php
-                            while($r = mysqli_fetch_array($result))
-                            {
-                                ?>
-                                <option value="<?php echo $r['idDotCuuTro'] ?>"><?php echo $r['tenDotCuuTro'] ?></option>
-                                <?php
-                            }
-                            ?>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>Hình ảnh</label>
-                        <input type="file" required="required" name="image" class="form-control" accept="img/*">
-                    </div>
-                    <div class="form-group">
-                        <label>Nội dung</label>
-                        <textarea required="required" name="noiDung" id="editor2" class="textarea" placeholder="Place some text here"
-                          style="width: 100%; height: 500px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
-                        <script>
-                            CKEDITOR.replace( 'editor2' );
-                        </script>
-                    </div>
-                    <button type="submit" name="add" class="btn btn-primary">Thêm</button>
-                </div>
-            </form>
-        </div>
-    </section>
-</div>
-    
-
-
-
-
-
-
+        </footer>
+        <!-- footer area end-->
     </div>
     <!-- page container area end -->
     <!-- offset area start -->
-   
+    <div class="offset-area">
+        <div class="offset-close"><i class="ti-close"></i></div>
+        <ul class="nav offset-menu-tab">
+            <li><a class="active" data-toggle="tab" href="#activity">Activity</a></li>
+            <li><a data-toggle="tab" href="#settings">Settings</a></li>
+        </ul>
+        
+           
     <!-- offset area end -->
     <!-- jquery latest version -->
     <script src="assets/js/vendor/jquery-2.2.4.min.js"></script>
@@ -243,6 +233,20 @@
     <script src="assets/js/jquery.slimscroll.min.js"></script>
     <script src="assets/js/jquery.slicknav.min.js"></script>
 
+    <!-- start chart js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+    <!-- start highcharts js -->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <!-- start zingchart js -->
+    <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+    <script>
+    zingchart.MODULESDIR = "https://cdn.zingchart.com/modules/";
+    ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9", "ee6b7db5b51705a13dc2339db3edaf6d"];
+    </script>
+    <!-- all line chart activation -->
+    <script src="assets/js/line-chart.js"></script>
+    <!-- all pie chart -->
+    <script src="assets/js/pie-chart.js"></script>
     <!-- others plugins -->
     <script src="assets/js/plugins.js"></script>
     <script src="assets/js/scripts.js"></script>

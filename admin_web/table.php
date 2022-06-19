@@ -64,19 +64,21 @@
                     <nav>
                         <ul class="metismenu" id="menu">
                             <li>
-                                <a href="index.php" aria-expanded="true"><i class="ti-dashboard"></i>
-                                <span>dashboard</span></a>
+                                <a href="index.php" aria-expanded="true"><i class="ti-dashboard"></i><span>dashboard</span></a>
                                 
                             </li>
-                            
-                            <li >
+                             <li class="active">
                                 <a href="users.php" aria-expanded="true"><i class="ti-user"></i>
                                 <span>Manage Users</span></a>
                             </li>
-                            
                             <li >
+                                <a href="client.php" aria-expanded="true"><i class="ti-user"></i>
+                                <span>Manage Supporter</span></a>
+                            </li>
+                            
+                            <li class="active">
                                 <a href="table.php" aria-expanded="true"><i class="fa fa-table"></i>
-                                <span>Item Succors</span></a>
+                                    <span>Item Succors</span></a>
                                
                             </li>
                             <li >
@@ -108,97 +110,90 @@
 
         
         <!-- main content area start -->
-            <div class="main-content">
-                <!-- header area start -->
-                <div class="header-area">
-                    <div class="row align-items-center">
-                        <!-- nav and search button -->
-                        <div class="col-md-6 col-sm-8 clearfix">
-                            <div class="nav-btn pull-left">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </div>
-    <!--                         <div class="search-box pull-left">
-                                <form action="#">
-                                    <input type="text" name="search" placeholder="Search..." required>
-                                    <i class="ti-search"></i>
-                                </form>
-                            </div> -->
+        <div class="main-content">
+            <!-- header area start -->
+            <div class="header-area">
+                <div class="row align-items-center">
+                    <!-- nav and search button -->
+                    <div class="col-md-6 col-sm-8 clearfix">
+                        <div class="nav-btn pull-left">
+                            <span></span>
+                            <span></span>
+                            <span></span>
                         </div>
+<!--                         <div class="search-box pull-left">
+                            <form action="#">
+                                <input type="text" name="search" placeholder="Search..." required>
+                                <i class="ti-search"></i>
+                            </form>
+                        </div> -->
+                    </div>
+                    
+                    <!-- profile info & task notification-->
+                    <div class="col-md-6 col-sm-4 clearfix">
                         
-                        <!-- profile info & task notification-->
-                        <div class="col-md-6 col-sm-4 clearfix">
-                            
+                    </div>
+                </div>
+            </div>
+            
+            <!-- header area end -->
+            <!-- page title area start -->
+            <div class="page-title-area">
+                <div class="row align-items-center">
+                    <div class="col-sm-6">
+                        <div class="breadcrumbs-area clearfix">
+                            <h4 class="page-title pull-left">Dashboard</h4>
+                            <ul class="breadcrumbs pull-left">
+                                <li><a href="index.php">Home</a></li>
+                                <li><span>Item Succors</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 clearfix">
+                        <div class="user-profile pull-right">
+                            <img class="avatar user-thumb" src="assets/images/author/avatar.png" alt="avatar">
+                            <h4 class="user-name dropdown-toggle" data-toggle="dropdown"><?php echo $_SESSION['username']; ?> <i class="fa fa-angle-down"></i></h4>
+                            <div class="dropdown-menu">
+                                
+                               <a class="dropdown-item" href="index.php?logout='1'">Log Out</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-                
-                <!-- header area end -->
-                <!-- page title area start -->
-                <div class="page-title-area">
-                    <div class="row align-items-center">
-                        <div class="col-sm-6">
-                            <div class="breadcrumbs-area clearfix">
-                                <h4 class="page-title pull-left">Dashboard</h4>
-                                <ul class="breadcrumbs pull-left">
-                                    <li><a href="index.php">Home</a></li>
-                                    <li><span>Manage Users</span></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 clearfix">
-                            <div class="user-profile pull-right">
-                                <img class="avatar user-thumb" src="assets/images/author/avatar.png" alt="avatar">
-                                <h4 class="user-name dropdown-toggle" data-toggle="dropdown"><?php echo $_SESSION['username']; ?> <i class="fa fa-angle-down"></i></h4>
-                                <div class="dropdown-menu">
-                                   <a class="dropdown-item" href="index.php?logout='1'">Log Out</a>
-                                </div>
-                            </div>
-                        </div>
-                   </div>
-                </div>
-                <!-- page title area end -->
-                <div>
-            
-<body>
-<form method="POST" class="form-center">
-    <div class="content-wrapper" style="min-height: 353px;">
-    <section class="content-header">
-        <div class="container-fluid">
-            <div class="row mb-2">
-                <div class="col-sm-7">
-                    <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item active"><a href="add_user.php">Add New User</a></li>
-                    </ol>
-                </div>
             </div>
-        </div>
-    </section>
-
-  <div class="col-12">
-    <div class="card">
-      <div class="card-body">
-          <span class="glyphicon glyphicon-th"></span>
-          <h4 class="header-title">Users</h4>
-     <div class="single-table">
-      <div class="table-responsive">
-      <table class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
-        <thead class="text-uppercase">
-          <tr class="table-active"> 
-            <th >STT</th>
-            <th >Name </th>
-            <th >Email</th>
-            <th >SDT</th>
-            <th >Adress</th>
-            <th >Actions</th>
+            <!-- page title area end -->
+            <div>
             
-          </tr>
-        </thead>
-                                                    <tbody>
+            <body>
+<form method="POST" class="main-content-inner" action="additem.php">
+  <div class="col-lg-6 mt-5">
+    <label for="name">Name Succor</label>
+    <input type="text" required="required" class="form-control" name="tenDotCuuTro">
+</br>
+    <button type="submit" class="btn btn-default" name="add">Add item</button>
+</div>
+</form> 
+</body>
+            <div class="main-content-inner">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="header-title">Succor</h4>
+                                <div class="single-table">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+                                            <thead class="text-uppercase">
+                                                <tr class="table-active">
+                                                    <th scope="col">ID</th>
+                                                    <th scope="col">Name Succor</th>
+                                                     <th scope="col">Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
             <?php 
                $conn = new mysqli("localhost","root","","quanlylulut");
-               $sql = "SELECT * FROM nhanvien";
+               $sql = "SELECT * FROM dotCuuTro";
                $result = $conn->query($sql);
                     $count=0;
                if ($result -> num_rows >  0) {
@@ -207,15 +202,13 @@
                  {
                       $count=$count+1;
                    ?>
+                  
+                   
                    <tr>
                     <th><?php echo $count ?></th>
-                      <th><?php echo $row["tenNhanVien"] ?></th>
-                      <th><?php echo $row["email"] ?></th>
-                      <th><?php echo $row["soDT"] ?></th>
-                      <th><?php echo $row["diaChi"] ?></th>
-
+                      <th><?php echo $row["tenDotCuuTro"] ?></th>
                       
-                      <th> <a href="up"Edit</a><a href="editUser.php?id=<?php echo $row["idNhanVien"] ?>">Edit</a> <a href="up"Edit</a><a href="deleteUser.php?id=<?php echo $row["idNhanVien"] ?>">Delete</a></th>
+                      <th> <a href="up"Edit</a><a href="edit.php?id=<?php echo $row["idDotCuuTro"] ?>">Edit</a> <a href="up"Edit</a><a href="delete.php?id=<?php echo $row["idDotCuuTro"] ?>">Delete</a></th>
                     
                       
                     </tr>
@@ -226,23 +219,37 @@
 
             ?>
 
-            </tbody>
-     </table>
-     </div>
-    </div>
-  </div>
-</div>
-</div>
-      </div>
-</form>
+                                            </tbody>
+                                        </table>
+           
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+
+
+</div>   
+                    </div>
+                    <!-- Contextual Classes end -->
+                   
+        <!-- main content area end -->
+      
 <html>
 <head>
-    <title>Add User</title>
+    <title>Add Item</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 </head>
 
 </html>
+    
+
+
+
+
+
+
     </div>
     <!-- page container area end -->
     <!-- offset area start -->
