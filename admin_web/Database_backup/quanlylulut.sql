@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th6 16, 2022 lúc 04:53 PM
+-- Thời gian đã tạo: Th6 19, 2022 lúc 04:31 AM
 -- Phiên bản máy phục vụ: 10.4.24-MariaDB
 -- Phiên bản PHP: 7.4.29
 
@@ -42,16 +42,17 @@ CREATE TABLE `baiviet` (
 --
 
 INSERT INTO `baiviet` (`idBaiViet`, `idDotCuuTro`, `tieuDe`, `noiDung`, `thoiGian`, `idNhanVien`, `image`) VALUES
-(1, 1, 'Ủng hộ người nghèo', 'Ủng hộ người nghèo', '2020-07-20', 1, 'sample-img-2.png'),
-(2, 1, 'Ủng hộ lũ lụt', 'Ủng hộ người nghèo', '2020-07-20', 1, 'sample-img-1.jpg'),
-(3, 2, 'Ủng hộ người nghèo', 'Ủng hộ người nghèo', '2020-07-20', 1, 'Germany.png'),
-(4, 3, 'Ủng hộ người nghèo', 'Ủng hộ người nghèo', '2020-07-20', 1, NULL),
-(8, 3, 'aa', 'noiDung', '2022-05-11', NULL, 'sample-img-3.png'),
-(10, 3, 'noi dung 2', 'hah', '2022-05-11', NULL, NULL),
-(11, 3, 'noi dung 3', 'hihi', '2022-06-16', NULL, NULL),
-(12, 3, 'noi dung 4', 'hihi', '2022-06-16', NULL, 'avatar1.jpg'),
-(13, 2, 'hhaa', 'wwwww', '2022-06-15', NULL, NULL),
-(14, 2, 'lũ 2021', 'h', '2022-06-15', NULL, 'bg-1.jpg');
+(1, 1, 'Ủng hộ người nghèo', 'Ủng hộ người nghèo', '2020-07-20', 1, 'lu1.jpg'),
+(2, 1, 'Ủng hộ lũ lụt', 'Ủng hộ người nghèo', '2020-07-20', 1, 'lu2.jpg'),
+(3, 1, 'Ủng hộ người nghèo', 'Ủng hộ người nghèo', '2020-07-20', 1, 'lu4.jpg'),
+(4, 1, 'Ủng hộ người nghèo', 'Ủng hộ người nghèo', '2020-07-20', 1, 'lu5.jpg'),
+(8, 5, 'aa', 'noiDung', '2022-05-11', NULL, 'lu8.jpg'),
+(10, 3, 'noi dung 2', 'hah', '2022-05-11', NULL, 'lu9.jpg'),
+(11, 2, 'noi dung 3', 'hihi', '2022-06-16', NULL, 'lu10.jpg'),
+(12, 5, 'noi dung 4', 'hihi', '2022-06-16', NULL, 'lu11.jpg'),
+(13, 1, 'hhaa', 'wwwww', '2022-06-15', NULL, 'lu7.jpg'),
+(14, 1, 'lũ 2021', 'h', '2022-06-15', NULL, 'lu6.jpg'),
+(15, 1, 'Lũ 2022', 'Ông Ngô Thành Tâm – Phó Chủ tịch UBND xã Hòa Liên thông tin, thôn Quang Nam 2, Quang Nam 5 hiện có 4 dự án là dự án Golden Hill, Vành Đai phía Tây 2, Hòa Liên 4 giai đoạn 3 và giai đoạn 4. Ngoài các dự án, địa bàn xã Hòa Liên còn hàng chục dự án đã và đan', '2022-06-17', NULL, 'Hoa-Vang5.jpg');
 
 -- --------------------------------------------------------
 
@@ -342,17 +343,19 @@ CREATE TABLE `nguoiungho` (
   `ngaySinh` date NOT NULL,
   `tenTaiKhoan` varchar(255) NOT NULL,
   `matKhau` varchar(255) NOT NULL,
-  `trangThai` varchar(255) DEFAULT NULL
+  `trangThai` varchar(255) DEFAULT NULL,
+  `status` int(11) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Đang đổ dữ liệu cho bảng `nguoiungho`
 --
 
-INSERT INTO `nguoiungho` (`idNguoiUngHo`, `tenNguoiUngHo`, `email`, `soDT`, `diaChi`, `donVi`, `gioiTinh`, `ngaySinh`, `tenTaiKhoan`, `matKhau`, `trangThai`) VALUES
-(1, 'Nguyễn Văn A', 'ngvana01@gmail.com', '0231456521', NULL, NULL, 0, '1990-01-01', '01', '12345', 'Bình thường'),
-(2, 'Nguyễn Văn B', 'ngvanb02@gmail.com', '0231456522', NULL, NULL, 0, '1990-01-01', 'nvb02', '12345', 'Bình thường'),
-(3, 'Nguyễn Văn C', 'ngvanc03@gmail.com', '0231456523', NULL, NULL, 1, '1990-01-01', 'nvc03', '12345', 'Bình thường');
+INSERT INTO `nguoiungho` (`idNguoiUngHo`, `tenNguoiUngHo`, `email`, `soDT`, `diaChi`, `donVi`, `gioiTinh`, `ngaySinh`, `tenTaiKhoan`, `matKhau`, `trangThai`, `status`) VALUES
+(1, 'Nguyễn Văn A', 'ngvana01@gmail.com', '0231456521', 'Đà Nẵng 1', 'abc', 1, '1990-01-01', '01', '12345', 'Bình thường', 1),
+(2, 'Nguyễn Văn B', 'ngvanb02@gmail.com', '0231456522', 'Đà Nẵng', NULL, 0, '1990-01-01', 'nvb02', '12345', 'Bình thường', 1),
+(3, 'Nguyễn Văn C', 'ngvanc03@gmail.com', '0231456523', 'Đà Nẵng', NULL, 1, '1990-01-01', 'nvc03', '12345', 'Bình thường', 1),
+(4, 'Công', 'dauthaicong11092001@gmail.com', '0123456789', '2 Thanh Sơn, Hải Châu, Đà Nẵng', 'UTE', 1, '2001-09-11', 'cong', '12345', 'Tốt', 0);
 
 -- --------------------------------------------------------
 
@@ -619,7 +622,7 @@ ALTER TABLE `xa`
 -- AUTO_INCREMENT cho bảng `baiviet`
 --
 ALTER TABLE `baiviet`
-  MODIFY `idBaiViet` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `idBaiViet` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT cho bảng `canbo`
@@ -643,7 +646,13 @@ ALTER TABLE `danhmuc`
 -- AUTO_INCREMENT cho bảng `dotcuutro`
 --
 ALTER TABLE `dotcuutro`
-  MODIFY `idDotCuuTro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `idDotCuuTro` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT cho bảng `nguoiungho`
+--
+ALTER TABLE `nguoiungho`
+  MODIFY `idNguoiUngHo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT cho bảng `nhanvien`
@@ -700,12 +709,6 @@ ALTER TABLE `chitietphieunhap`
 ALTER TABLE `chitietphieuxuat`
   ADD CONSTRAINT `FK__ChiTietPh__idHan__02FC7413` FOREIGN KEY (`idHangCuuTro`) REFERENCES `hangcuutro` (`idHangCuuTro`),
   ADD CONSTRAINT `FK__ChiTietPh__idPhi__02084FDA` FOREIGN KEY (`idPhieuXuat`) REFERENCES `phieuxuat` (`idPhieuXuat`);
-
---
--- Các ràng buộc cho bảng `dangkyungho`
---
-ALTER TABLE `dangkyungho`
-  ADD CONSTRAINT `FK__DangKyUng__idNgu__5812160E` FOREIGN KEY (`idNguoiUngHo`) REFERENCES `nguoiungho` (`idNguoiUngHo`);
 
 --
 -- Các ràng buộc cho bảng `dotcuutro`
