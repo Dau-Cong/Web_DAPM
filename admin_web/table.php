@@ -82,6 +82,14 @@
                                
                             </li>
                             <li >
+                                <a href="show_dangkiungho.php" aria-expanded="true"><i class="fa fa-table"></i>
+                                <span>Xét duyêt ủng hộ</span></a>
+                             </li>
+                             <li >
+                                <a href="show_phieunhap.php" aria-expanded="true"><i class="fa fa-table"></i>
+                                <span>Phiếu nhập</span></a>
+                             </li>
+                            <li >
                                 <a href="#" aria-expanded="true"><i class="fa fa-rss"></i>
                                     <span>Blog</span>
                                 </a>
